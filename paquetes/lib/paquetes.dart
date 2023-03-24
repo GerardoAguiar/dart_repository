@@ -38,7 +38,28 @@ void getReqRes_pokemon(){
       final resReqRes =  pokemonFromJson(res.body);
       //print('Pokemon: ${resReqRes.results[0].name}');
       //print('Url: ${resReqRes.results[0].url}');
-      print('Your Pokemon is: ${resReqRes.results[pokemon].name} And your URL is: ${resReqRes.results[pokemon].url}');
+      //print('Your Pokemon is: ${resReqRes.results[pokemon].name} And your URL is: ${resReqRes.results[pokemon].url}');
       
+      });
+}
+
+
+void getReqRes_Datapokemon(){
+      
+      final url = Uri.parse('https://pokeapi.co/api/v2/pokemon/14/');
+      http.get(url).then((res){
+      
+      var random = Random();
+      int pokemon = random.nextInt(19); 
+
+
+      final resReqRes =  pokemonDataFromJson(res.body);
+      //print('Pokemon: ${resReqRes.results[0].name}');
+      //print('Url: ${resReqRes.results[0].url}');
+      print('===========================');
+      print('Your Pokemon is: ${resReqRes.forms[0].name}');
+      print('Your Pokemon Version is: ${resReqRes.gameIndices[pokemon].version.name}');
+      print('Your Pokemon Move is: ${resReqRes.moves[1].move.name} Learned at: ${resReqRes.moves[1].versionGroupDetails[pokemon].levelLearnedAt} and your Pokemon version is: ${resReqRes.moves[1].versionGroupDetails[pokemon].versionGroup.name} ');
+      print('===========================');
       });
 }
